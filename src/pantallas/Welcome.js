@@ -1,17 +1,20 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import patter from '../../assets/patter.png'
+import pattern from '../../assets/pattern.png'
+import welcomelogo from '../../assets/welcomelogo.png'
 import { button1 } from '../common/button'
-const Welcome = () => {
+
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image style={styles.patternbg} source={patter}/>
-      {/*<Text style={styles.head}>HOLA</Text>*/}
+      <Image style={styles.patternbg} source={pattern}/>
+      
       <View style={styles.container1}>
-            {/*<Text style={styles.head} > Welcome to</Text>*/}
-           {/* <Image style={styles.logo} source={require('../../assets/jelly.png')}/>*/}
-           <Text style={button1}>Login</Text>
-           <Text style={button1}>Signup</Text>
+           <Image style={styles.logo} source={welcomelogo}/>
+           <Text style={button1} onPress={() => navigation.navigate('Login')}>
+            Login</Text>
+           <Text style={button1} onPress={() => navigation.navigate('Signup')}>
+            Signup</Text>
       </View>
     </View>
   )
@@ -20,33 +23,32 @@ const Welcome = () => {
 export default Welcome
 
 const styles = StyleSheet.create({
-    container:{
-        width:'100%',
-        height:'100%'
-    },
-    patternbg:{
-        position:'absolute',
-        top:0,
-        width:'100%',
-        height:'100%',
-        zIndex:-1,
-    },
-    head:{
-      fontSize:30,
-      colo:'#fff'
-    },
-    container1:{
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center',
-      height:'100%',
-    },
-    logo:{
-
-    },
-    x:{
-      minWidth:200,
-
-    }
- 
+  container: {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+  },
+  patternbg: {
+      position: 'absolute',
+      top: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: -1,
+  },
+  head: {
+      fontSize: 30,
+      color: '#fff',
+  },
+  container1: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      width: '100%',
+  },
+  logo: {
+      height: '20%',
+      resizeMode: 'contain',
+      marginBottom: 50,
+  }
 })

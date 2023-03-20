@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React from 'react'
-import patter from '../../assets/patter.png'
-import logo from '../../assets/jelly.png'
+import pattern from '../../assets/pattern.png'
+import logo from '../../assets/mainlogo.png'
 import { button1 } from '../common/button'
 import { head1,head2,formgroup,label,input,link,link2 } from '../common/formcss'
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Image style={styles.patternbg} source={patter}/>
+      <Image style={styles.patternbg} source={pattern}/>
 
       <View style={styles.container1}>
           <View style={styles.s1}>
-            {/*<Image style={styles.logo} source={logo}/>*/}
-            <Text style={styles.h1}>Jelly delly</Text>
+            <Image style={styles.logo} source={logo}/>
+            <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Jelly delly</Text>
             <Text style={styles.small1}>equipo </Text>
           </View>
 
@@ -22,18 +22,21 @@ const Login = () => {
             <Text style={head2}>Sign in to continue</Text>
             <View style={formgroup}>
               <Text style={label}>Email</Text>
-              <TextInput style={input}/>
+              <TextInput style={input}
+              placeholder="Enter your email"/>
             </View>
             <View style={formgroup}>
               <Text style={label}>Password</Text>
-              <TextInput style={input}/>
+              <TextInput style={input}
+              placeholder="Enter your password"/>
             </View >
             <View style={styles.fp}>
               <Text style={link}>olvidaste la contraseña</Text>
             </View>
             <Text style={button1}> Login</Text>
-            <Text style={link2}> no tienes cuenta? 
-              <Text style={link}>Crea una nueva</Text> 
+            <Text style={link2}> no tienes cuenta?&nbsp;
+              <Text style={link} onPress={() => navigation.navigate('Signup')}
+              >Crea una nueva</Text> 
             </Text>
           </View>
       </View>
@@ -110,5 +113,10 @@ fp:{
   alignItems:'flex-end',
   marginHorizontal:10,
   marginVertical:10
-}
+},
+logo:{
+  height:'30%',
+  resizeMode:'contain',
+
+},
 })
