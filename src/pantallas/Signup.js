@@ -1,50 +1,132 @@
-import { StyleSheet, Text, View, Image, TextInput, ScrollView } from 'react-native'
-import React from 'react'
-import pattern from '../../assets/pattern.png'
+import { StyleSheet, Text, View, Image, TextInput, ScrollView,TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import Morado2 from '../../assets/Morado2.png'
 import logo from '../../assets/mainlogo.png'
 import { button1 } from '../common/button'
-import { head1,head2,formgroup,label,input,link,link2,input1 } from '../common/formcss'
+import { head1,head2,formgroup,label,input,link,link2,input1,errormessage } from '../common/formcss'
 
 const Signup = ({navigation}) => {
+
+  const [fdata, setFdata] = useState({
+    name: '',
+    namep: '',
+    namem: '',
+    email: '',
+    password: '',
+    cpassword: '',
+  })
+
+  const [errormsg, setErrormsg] = useState(null);
+
+  const Sendtobackend =() =>{
+   // console.log(fdata);
+    if (fdata.name == '' ||
+      fdata.namep == '' ||
+      fdata.namem == '' ||
+      fdata.email == '' ||
+      fdata.password == '' ||
+      fdata.cpassword == '' ) {
+      setErrormsg('todos los campos son requerisoa');
+      return;
+    }
+    else {
+      if (fdata.password != fdata.cpassword) {
+        setErrormsg('La contraseña y Confirmar contraseña deben ser iguales');
+        return;
+      }
+      else {
+        fetch('http://192.168.5.8:3000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(fdata)
+        })
+        .then(res => res.json()).then(
+          data => {
+            //console.log(data);
+            if(data.error){
+              setErrormsg(data.error);
+            }
+            else{
+              alert('cuenta creada con exito');
+              navigation.navigate('Login');
+            }
+        })
+    }
+  }
+}
+
   return (
     <View style={styles.container}>
-      <Image style={styles.patternbg} source={pattern}/>
+      <Image style={styles.patternbg} source={Morado2}/>
 
       <View style={styles.container1}>
-          {/*<View style={styles.s1}></View>*/}
+          <View style={styles.s1}></View>
 
           <ScrollView style={styles.s2}>
             <Text style={head1}>create una nueva cuenta</Text>
+
             <Text style={link2}> ya tienes cuenta?&nbsp; 
               <Text style={link} onPress={() => navigation.navigate('Login')}
               >inicia sesion</Text> 
             </Text>
+            {
+              errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
+            }
             <View style={formgroup}>
               <Text style={label}>Nombre</Text>
-              <TextInput style={input} placeholder="Ingresa tu nombre"/>
+              <TextInput style={input} placeholder="Ingresa tu nombre"
+              onPressIn={() => setErrormsg(null)}
+              onChangeText={(text) => setFdata({ ...fdata, name: text })}
+              />
             </View>
             <View style={formgroup}>
               <Text style={label}>apellido paterno</Text>
-              <TextInput style={input} placeholder="Ingresa tu primer apellido"/>
+              <TextInput style={input} placeholder="Ingresa tu primer apellido"
+              onPressIn={() => setErrormsg(null)}
+              onChangeText={(text) => setFdata({ ...fdata, namep: text })}
+              />
             </View>
             <View style={formgroup}>
               <Text style={label}>apellido materno</Text>
-              <TextInput style={input} placeholder="Ingresa tu segundo apellido"/>
+              <TextInput style={input} placeholder="Ingresa tu segundo apellido"
+              onPressIn={() => setErrormsg(null)}
+              onChangeText={(text) => setFdata({ ...fdata, namem: text })}
+              />
             </View>
             <View style={formgroup}>
               <Text style={label}>Email</Text>
-              <TextInput style={input} placeholder="Ingresa tu correo"/>
+              <TextInput style={input} placeholder="Ingresa tu correo"
+              onPressIn={() => setErrormsg(null)}
+              onChangeText={(text) => setFdata({ ...fdata, email: text })}
+              />
             </View>
             <View style={formgroup}>
               <Text style={label}>contraseña</Text>
-              <TextInput style={input} placeholder="Ingresa tu contraseña"/>
+              <TextInput style={input} placeholder="Ingresa tu contraseña"
+              onPressIn={() => setErrormsg(null)}
+              secureTextEntry={true}
+              onChangeText={(text) => setFdata({ ...fdata, password: text })}
+              />
             </View>
             <View style={formgroup}>
               <Text style={label}> confirma contraseña</Text>
-              <TextInput style={input} placeholder="Ingresa de nuevo tu contraseña"/>
+              <TextInput style={input} placeholder="Ingresa de nuevo tu contraseña"
+              onPressIn={() => setErrormsg(null)}
+              secureTextEntry={true}
+              onChangeText={(text) => setFdata({ ...fdata, cpassword: text })}
+              />
             </View>
             
-            <Text style={button1}> registarte</Text>
+            <TouchableOpacity
+              onPress={() => {
+               Sendtobackend();
+              }}
+            >
+              <Text style={button1}
+              >Signup</Text>
+            </TouchableOpacity>
           </ScrollView>
       </View>
     </View>
@@ -78,7 +160,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '10%',
+      height: '15%',
   },
   small1: {
       color: '#fff',

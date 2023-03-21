@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import pattern from '../../assets/pattern.png'
-import welcomelogo from '../../assets/welcomelogo.png'
+import Morado2 from '../../assets/Morado2.png'
+import welcomelogo from '../../assets/logo.png'
 import { button1 } from '../common/button'
 
 const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image style={styles.patternbg} source={pattern}/>
+      <Image style={styles.patternbg} source={Morado2}/>
       
       <View style={styles.container1}>
            <Image style={styles.logo} source={welcomelogo}/>
@@ -47,8 +47,10 @@ const styles = StyleSheet.create({
       width: '100%',
   },
   logo: {
-      height: '20%',
-      resizeMode: 'contain',
-      marginBottom: 50,
+    width:'60%',
+    height: '30%',
+    resizeMode: 'contain',
+    marginBottom: 40,
+    borderRadius:30
   }
 })
