@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, TextInput, ScrollView,TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import Morado2 from '../../assets/Morado2.png'
-import logo from '../../assets/mainlogo.png'
+import Morado2 from '../../assets/f.png'
 import { button1 } from '../common/button'
 import { head1,head2,formgroup,label,input,link,link2,input1,errormessage } from '../common/formcss'
 
@@ -35,7 +34,7 @@ const Signup = ({navigation}) => {
         return;
       }
       else {
-        fetch('http://192.168.5.8:3000/signup', {
+        fetch('http://192.168.5.27:3000/verify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -44,14 +43,17 @@ const Signup = ({navigation}) => {
         })
         .then(res => res.json()).then(
           data => {
-            //console.log(data);
-            if(data.error){
-              setErrormsg(data.error);
-            }
-            else{
-              alert('cuenta creada con exito');
-              navigation.navigate('Login');
-            }
+            console.log(data);
+            // console.log(data);
+            if (data.error === 'crenciales invalidas') {
+              // alert('Invalid Credentials')
+              setErrormsg('crenciales invalidas')
+          }
+          else if (data.message === "Código de verificación enviado a su correo electrónico") {
+              console.log(data.udata);
+              alert(data.message);
+              navigation.navigate('Verification', { userdata: data.udata })
+          }
         })
     }
   }
@@ -65,11 +67,11 @@ const Signup = ({navigation}) => {
           <View style={styles.s1}></View>
 
           <ScrollView style={styles.s2}>
-            <Text style={head1}>create una nueva cuenta</Text>
+            <Text style={head1}>Crear una nueva cuenta</Text>
 
-            <Text style={link2}> ya tienes cuenta?&nbsp; 
+            <Text style={link2}> Ya tienes cuenta?&nbsp; 
               <Text style={link} onPress={() => navigation.navigate('Login')}
-              >inicia sesion</Text> 
+              >Inicia sesion</Text> 
             </Text>
             {
               errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
@@ -82,14 +84,14 @@ const Signup = ({navigation}) => {
               />
             </View>
             <View style={formgroup}>
-              <Text style={label}>apellido paterno</Text>
+              <Text style={label}>Apellido paterno</Text>
               <TextInput style={input} placeholder="Ingresa tu primer apellido"
               onPressIn={() => setErrormsg(null)}
               onChangeText={(text) => setFdata({ ...fdata, namep: text })}
               />
             </View>
             <View style={formgroup}>
-              <Text style={label}>apellido materno</Text>
+              <Text style={label}>Apellido materno</Text>
               <TextInput style={input} placeholder="Ingresa tu segundo apellido"
               onPressIn={() => setErrormsg(null)}
               onChangeText={(text) => setFdata({ ...fdata, namem: text })}
@@ -103,7 +105,7 @@ const Signup = ({navigation}) => {
               />
             </View>
             <View style={formgroup}>
-              <Text style={label}>contraseña</Text>
+              <Text style={label}>Contraseña</Text>
               <TextInput style={input} placeholder="Ingresa tu contraseña"
               onPressIn={() => setErrormsg(null)}
               secureTextEntry={true}
@@ -111,7 +113,7 @@ const Signup = ({navigation}) => {
               />
             </View>
             <View style={formgroup}>
-              <Text style={label}> confirma contraseña</Text>
+              <Text style={label}> Confirma contraseña</Text>
               <TextInput style={input} placeholder="Ingresa de nuevo tu contraseña"
               onPressIn={() => setErrormsg(null)}
               secureTextEntry={true}
@@ -125,7 +127,7 @@ const Signup = ({navigation}) => {
               }}
             >
               <Text style={button1}
-              >Signup</Text>
+              >Registrarse</Text>
             </TouchableOpacity>
           </ScrollView>
       </View>

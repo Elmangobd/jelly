@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import Morado2 from '../../assets/Morado2.png'
-import logo from '../../assets/gel.png'
+import Morado2 from '../../assets/f.png'
+import logo from '../../assets/g.png'
 import { button1 } from '../common/button'
 import { head1,head2,formgroup,label,input,link,link2,errormessage } from '../common/formcss'
 
@@ -20,7 +20,7 @@ const Sendtobackend = () => {
     return;
   }
   else {
-    fetch('http://192.168.5.8:3000/signin', {
+    fetch('http://192.168.5.27:3000/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -51,12 +51,12 @@ const Sendtobackend = () => {
           <View style={styles.s1}>
             <Image style={styles.logo} source={logo}/>
             <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Jelly delly</Text>
-            <Text style={styles.small1}>equipo </Text>
+            <Text style={styles.small1}>Equipo</Text>
           </View>
 
           <View style={styles.s2}>
-            <Text style={head1}>inicio de secion</Text>
-            <Text style={head2}>registrate para continuar</Text>
+            <Text style={head1}>Inicio de sesion</Text>
+            <Text style={head2}>Registrate para continuar</Text>
             {
               errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
             }
@@ -70,7 +70,7 @@ const Sendtobackend = () => {
             </View>
 
             <View style={formgroup}>
-              <Text style={label}>Password</Text>
+              <Text style={label}>Contraseña</Text>
               <TextInput style={input}
               placeholder="ingresa tu  password"
               secureTextEntry={true}
@@ -80,14 +80,14 @@ const Sendtobackend = () => {
             </View >
 
             <View style={styles.fp}>
-              <Text style={link}>olvidaste la contraseña</Text>
+              <Text style={link}>Olvidaste la contraseña</Text>
             </View>
 
             <Text style={button1}
             onPress={() => Sendtobackend()}
-            > Login</Text>
+            > Iniciar sesion</Text>
 
-            <Text style={link2}> no tienes cuenta?&nbsp;
+            <Text style={link2}>No tienes cuenta?&nbsp;
               <Text style={link} onPress={() => navigation.navigate('Signup')}
               >Crea una nueva</Text> 
             </Text>
@@ -108,10 +108,9 @@ const styles = StyleSheet.create({
 },
 patternbg:{
     position:'absolute',
-    top:0,
     width:'100%',
     height:'100%',
-    zIndex:-1,
+    zIndex:-1
 },
 container1:{
   display:'flex',

@@ -1,6 +1,6 @@
 module.exports ={
     button1:{
-        backgroundColor:'#F50057',
+        backgroundColor:'#9E4784',
         color:'#fff',
         padding:10,
         borderRadius:5,

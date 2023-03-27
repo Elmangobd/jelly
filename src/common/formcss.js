@@ -23,7 +23,7 @@ module.exports = {
         marginBottom: 3,
     },
     input: {
-        backgroundColor: "#FFB0CC",
+        backgroundColor: "#e8eaed",
         borderRadius: 20,
         paddingHorizontal: 10,
         paddingVertical: 10,

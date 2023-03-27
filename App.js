@@ -20,10 +20,10 @@ import Perfil from './Pantallas/Drawer/Perfil';
 import CustomDrawer from './Componentes/CustomDrawer';
 import GelatinaFresa from './Pantallas/Stack/GelatinaFresa';
 import GelatinaFrutosRojos from './Pantallas/Stack/GelatinaFrutosRojos';
+import Verification from './src/pantallas/Verification';
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -52,7 +52,16 @@ export default function App() {
         {
           headerShown: false
         }
-      }  />
+        
+      } />
+      <Stack.Screen name="Verification" component={Verification}
+          options={
+            {
+              headerShown: false
+            }
+          }
+
+        />
     </Stack.Navigator>
   </NavigationContainer>
 
@@ -95,6 +104,10 @@ function MyDrawer() {
     </Drawer.Navigator>
   );
 }
+
+
+
+const Stack = createNativeStackNavigator();
 function MyTabs() {
   return (
     

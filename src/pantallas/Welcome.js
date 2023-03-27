@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import Morado2 from '../../assets/Morado2.png'
+import Morado2 from '../../assets/f.png'
 import welcomelogo from '../../assets/logo.png'
 import { button1 } from '../common/button'
 
@@ -12,9 +12,9 @@ const Welcome = ({ navigation }) => {
       <View style={styles.container1}>
            <Image style={styles.logo} source={welcomelogo}/>
            <Text style={button1} onPress={() => navigation.navigate('Login')}>
-            Login</Text>
+            Iniciar sesion</Text>
            <Text style={button1} onPress={() => navigation.navigate('Signup')}>
-            Signup</Text>
+            Registro</Text>
       </View>
     </View>
   )
