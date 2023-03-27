@@ -69,9 +69,6 @@ const Login = ({navigation}) => {
             />
           </View >
 
-          <View style={styles.fp}>
-            <Text style={link}>olvidaste la contraseña</Text>
-          </View>
 
           <Text style={button1}
           onPress={() => Sendtobackend()}
