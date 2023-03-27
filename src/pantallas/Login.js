@@ -12,7 +12,7 @@ const Login = ({navigation}) => {
   const [login, setlogin] = useState(false)
   
   const Sendtobackend = () => {
-      fetch('http://192.168.5.27:8000/api/users/email/' + email)
+      fetch('https://gelatinaserver-git-main-mangobd.vercel.app/api/users/email/' + email)
           .then(resp => resp.json())
           .then(data => {
               if(email == '' && password == ''){

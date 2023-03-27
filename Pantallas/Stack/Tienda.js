@@ -11,7 +11,7 @@ const App = (navigation) => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch('http://192.168.5.27:8000/api/products');
+      const response = await fetch('https://gelatinaserver-git-main-mangobd.vercel.app/api/products');
       const data = await response.json()
       setProducts(data)
       
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     card:{
         marginTop:25,
-        backgroundColor:'purple',
+        backgroundColor:'#a10ca7d4',
         marginLeft:'13%',
         height:400,
         width:300,

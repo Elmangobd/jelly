@@ -81,7 +81,7 @@ function MyDrawer() {
     <Drawer.Navigator 
     drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
-        drawerActiveBackgroundColor: '#aa18ea',
+        drawerActiveBackgroundColor: '#640068f5',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
         drawerLabelStyle: {
@@ -120,7 +120,7 @@ function MyTabs() {
     <Tab.Navigator 
     screenOptions={{
       headerShown: false,
-      tabBarStyle: {backgroundColor: '#AD40AF'},
+      tabBarStyle: {backgroundColor: '#640068f5'},
       tabBarInactiveTintColor: '#fff',
       tabBarActiveTintColor: 'yellow',
     }}>

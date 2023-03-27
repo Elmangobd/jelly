@@ -31,7 +31,7 @@ const OpenURLButton = ({url, children}) => {
 function Contacto({ navigation }) {
 
   const llamada = async()=>{
-    await Linking.openURL("tel:+7712676518");
+    await Linking.openURL("tel:7712676518");
   };
   const msg = async()=>{
     await Linking.openURL("sms:+527712676518?body=Hola me interesa conocer mas hacerca de sus productos");
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     width:360,
     paddingHorizontal:30,
     paddingVertical:30,
-    borderColor:'black',borderWidth:2,
+    borderColor:'#640068f5',borderWidth:2,
     borderRadius:50
   },
   botones:{

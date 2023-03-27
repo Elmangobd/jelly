@@ -34,7 +34,7 @@ const Signup = ({navigation}) => {
         return;
       }
       else {
-        fetch('http://192.168.5.27:8000/api/users', {
+        fetch('https://gelatinaserver-git-main-mangobd.vercel.app/api/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
