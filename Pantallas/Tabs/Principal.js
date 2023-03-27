@@ -14,15 +14,15 @@ const Principal=({navigation})=> {
 
         <ImageBackground source={localImage}  style={styles.image}>
           <View style={styles.encabezado}>
-            <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'      salir'}></Btn>
+            <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'    salir'}></Btn>
             <View style={styles.banner}>
              <Image source={require('../../assets/Logo/titulo.png')} style={styles.titulo} ></Image>
             </View>
           </View>
           <View style={{paddingHorizontal:28,paddingVertical:0,}}>
             <View style={styles.info}>
-                <Text style={{fontSize: 30, color:'black',fontWeight:'600'}}> Bienvenido a Jelly-Delly </Text>
-                <Text style={{fontSize: 20}}>Somos una empresa dedicada ala fabricacion de gelatinas, nuestra tienda es diferenciada de todas por la 
+                <Text style={{fontSize: 20, color:'black',fontWeight:'600'}}> Bienvenido a Jelly-Delly </Text>
+                <Text style={{fontSize: 15}}>Somos una empresa dedicada ala fabricacion de gelatinas, nuestra tienda es diferenciada de todas por la 
                       gran variedad de Productos con loss que contamos, te invito a dar una vistazo por nuestra apliacion  y 
                       conozcas mas de nosotros </Text>
                 <Text></Text>

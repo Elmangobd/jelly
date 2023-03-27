@@ -11,7 +11,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Principal from './Pantallas/Tabs/Principal';
-import Productos from './Pantallas/Tabs/Productos';
+
 import Contacto from './Pantallas/Tabs/Contacto';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -55,13 +55,6 @@ export default function App() {
         
       } />
       <Stack.Screen name="Tienda" component={Tienda}
-      options={
-        {
-          headerShown: false
-        }
-        
-      } />
-      <Stack.Screen name="Productos" component={Productos}
       options={
         {
           headerShown: false

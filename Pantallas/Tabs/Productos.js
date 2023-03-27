@@ -13,7 +13,7 @@ function Productos({ navigation }) {
 
         <ImageBackground source={localImage}  style={styles.image}>
           <View style={styles.encabezado}>
-            <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'      salir'} ></Btn>
+            <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'    salir'} ></Btn>
             <View style={styles.banner}>
              <Image source={require('../../assets/Logo/titulo.png')} style={styles.titulo} ></Image>
             </View>

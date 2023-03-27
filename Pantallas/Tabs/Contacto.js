@@ -54,7 +54,7 @@ function Contacto({ navigation }) {
  
       <ImageBackground source={localImage}  style={styles.image}>
         <View style={styles.encabezado}>
-          <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'      salir'}></Btn>
+          <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'    salir'}></Btn>
           <View style={styles.banner}>
            <Image source={require('../../assets/Logo/titulo.png')} style={styles.titulo} ></Image>
           </View>
@@ -64,18 +64,18 @@ function Contacto({ navigation }) {
               <Text style={{paddingHorizontal:10, fontWeight:'800',fontSize: 25, color:'black'}}> Conoce mas sobre nosotros </Text>
               
              <View>
-             <Text  style={{  fontWeight:'600',  fontSize: 30, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >Whatsapp</Text>
+             <Text  style={{  fontWeight:'600',  fontSize: 20, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >Whatsapp</Text>
                  <Btn img={require('../../assets/Redes/whats.png') } funcion={Watsapp}></Btn>
                  
              </View>
 
              <View>
-                <Text  style={{ fontWeight:'600',  fontSize: 30, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >facebook</Text> 
+                <Text  style={{ fontWeight:'600',  fontSize: 20, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >facebook</Text> 
               <Btn img={require('../../assets/Redes/facebook.png')}   funcion={facebook}></Btn>
              </View>
 
              <View>
-                <Text style={{  fontWeight:'600',  fontSize: 30, paddingHorizontal:100, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}}>Gmail</Text>
+                <Text style={{  fontWeight:'600',  fontSize: 20, paddingHorizontal:100, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}}>Gmail</Text>
               <Btn img={require('../../assets/Redes/email.png')} funcion={gmail} ></Btn>
              </View>
              
