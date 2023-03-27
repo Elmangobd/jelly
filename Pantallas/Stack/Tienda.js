@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View, StyleSheet ,ScrollView,SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import {FlatList, Text, View, StyleSheet ,ScrollView,SafeAreaView} from 'react-native';
+import { Image } from 'react-native';
 import {Btn} from '../../Componentes/Componentes';
 
 const App = (navigation) => {
@@ -32,24 +33,24 @@ const App = (navigation) => {
         <ScrollView>
             <View style={styles.card}>
                 <View style={{marginTop:20, width:'80%', height:'80%'}}>
-                    <Text style={{color:'white',paddingLeft:30}}>
-                        {item.imagen}</Text>
+                  
+                    <Image source={{uri:'https://jellydellyuthh.com/'+ item.imagen}} style={{marginTop:'5%',marginLeft:'12%',width:'100%',height:'50%',borderRadius:20}} />
 
                     <Text style={{color:'white',paddingLeft:30,fontSize:19}}>
-                    <Text>Nombre del producto : </Text>
+                    <Text>Nombre del producto :            </Text>
                     {item.nombre}</Text>
 
                     <Text style={{color:'white',paddingLeft:30,fontSize:19}}>
-                        <Text>descripcion : </Text>
+                        <Text>Descripcion :                           </Text>
                         {item.descripcion}</Text>
 
                     <Text style={{color:'white',paddingLeft:30,fontSize:19}} >
-                        <Text>Precio : </Text>
+                        <Text>Precio :  </Text>
                         {item.precio} </Text>
 
                     <Text style={{color:'white',paddingLeft:30,fontSize:19}} >
-                        <Text>stock :
-                        </Text>{item.stock} </Text>
+                        <Text>stock :  </Text>
+                        {item.stock} </Text>
 
                 </View>
             </View>
@@ -136,4 +137,11 @@ const styles = StyleSheet.create({
         height:50,
         width:300
       },
+      imagen:{
+          marginTop:'5%',
+          marginLeft:'10%',
+          width:'80%',
+          height:'50%',
+          borderRadius: 5
+      }
 })

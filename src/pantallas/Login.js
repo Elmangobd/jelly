@@ -41,12 +41,12 @@ const Login = ({navigation}) => {
         <View style={styles.s1}>
           <Image style={styles.logo} source={logo}/>
           <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Jelly delly</Text>
-          <Text style={styles.small1}>equipo </Text>
+          <Text style={styles.small1}>Equipo 2 </Text>
         </View>
 
         <View style={styles.s2}>
-          <Text style={head1}>inicio de secion</Text>
-          <Text style={head2}>registrate para continuar</Text>
+          <Text style={head1}>Inicio de sesion</Text>
+          <Text style={head2}>Registrate para continuar</Text>
           {
             errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
           }
@@ -60,9 +60,9 @@ const Login = ({navigation}) => {
           </View>
 
           <View style={formgroup}>
-            <Text style={label}>Password</Text>
+            <Text style={label}>contraseña</Text>
             <TextInput style={input}
-            placeholder="ingresa tu  password"
+            placeholder="ingresa tu  contraseña"
             secureTextEntry={true}
             onChangeText={value => setpass(value)}
             onPressIn={() => setErrormsg(null)}
@@ -72,7 +72,7 @@ const Login = ({navigation}) => {
 
           <Text style={button1}
           onPress={() => Sendtobackend()}
-          > Login</Text>
+          > Iniciar sesion</Text>
 
           <Text style={link2}> no tienes cuenta?&nbsp;
             <Text style={link} onPress={() => navigation.navigate('Signup')}
