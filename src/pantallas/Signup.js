@@ -25,7 +25,7 @@ const Signup = ({navigation}) => {
       fdata.email == '' ||
       fdata.password == '' ||
       fdata.cpassword == '' ) {
-      setErrormsg('todos los campos son requerisoa');
+      setErrormsg('todos los campos son requeridos');
       return;
     }
     else {
@@ -34,7 +34,7 @@ const Signup = ({navigation}) => {
         return;
       }
       else {
-        fetch('http://192.168.5.27:3000/verify', {
+        fetch('http://192.168.5.27:8000/api/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -43,17 +43,14 @@ const Signup = ({navigation}) => {
         })
         .then(res => res.json()).then(
           data => {
-            console.log(data);
-            // console.log(data);
-            if (data.error === 'crenciales invalidas') {
-              // alert('Invalid Credentials')
-              setErrormsg('crenciales invalidas')
-          }
-          else if (data.message === "Código de verificación enviado a su correo electrónico") {
-              console.log(data.udata);
-              alert(data.message);
-              navigation.navigate('Verification', { userdata: data.udata })
-          }
+            //console.log(data);
+            if(data.error){
+              setErrormsg(data.error);
+            }
+            else{
+              alert('cuenta creada con exito');
+              navigation.navigate('welcome');
+            }
         })
     }
   }

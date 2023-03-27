@@ -1,5 +1,6 @@
 import  React,{useCallback} from 'react';
 import {Image,ImageBackground, StyleSheet, Text, View, Linking,Alert, Button} from 'react-native';
+import { color } from 'react-native-reanimated';
 import {Btn} from '../../Componentes/Componentes';
 
 const localImage = require("../../assets/Fondos/Arauco-Blanco1.png")
@@ -41,6 +42,9 @@ function Contacto({ navigation }) {
   const Watsapp = async()=>{
     await Linking.openURL("https://wa.me/7712676518?text=Hola me interesa conocer mas hacerca de sus productos");
   };
+  const facebook = async()=>{
+    await Linking.openURL("https://www.facebook.com/JellyDelly2022?mibextid=ZbWKwL");
+  };
   const regreso =()=>{
     navigation.navigate('welcome');
   }
@@ -50,32 +54,32 @@ function Contacto({ navigation }) {
  
       <ImageBackground source={localImage}  style={styles.image}>
         <View style={styles.encabezado}>
-          <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso}></Btn>
+          <Btn img={require('../../assets/Logo/logo.png')} funcion={regreso} titulo={'      salir'}></Btn>
           <View style={styles.banner}>
            <Image source={require('../../assets/Logo/titulo.png')} style={styles.titulo} ></Image>
           </View>
         </View>
         <View style={{paddingHorizontal:28,paddingVertical:0}}>
           <View style={styles.info}>
-              <Text style={{fontSize: 25, color:'black'}}> Conoce mas sobre nosotros </Text>
+              <Text style={{paddingHorizontal:10, fontWeight:'800',fontSize: 25, color:'black'}}> Conoce mas sobre nosotros </Text>
               
              <View>
-             <Text  style={{    fontSize: 20, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >Whatsapp</Text>
+             <Text  style={{  fontWeight:'600',  fontSize: 30, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >Whatsapp</Text>
                  <Btn img={require('../../assets/Redes/whats.png') } funcion={Watsapp}></Btn>
                  
              </View>
 
              <View>
-                <Text  style={{    fontSize: 20, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >facebook</Text> 
-              <Btn img={require('../../assets/Redes/facebook.png')} ></Btn>
+                <Text  style={{ fontWeight:'600',  fontSize: 30, paddingHorizontal:80, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}} >facebook</Text> 
+              <Btn img={require('../../assets/Redes/facebook.png')}   funcion={facebook}></Btn>
              </View>
 
              <View>
-                <Text style={{    fontSize: 20, paddingHorizontal:100, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}}>Gmail</Text>
+                <Text style={{  fontWeight:'600',  fontSize: 30, paddingHorizontal:100, paddingVertical:25, position:'absolute', alignSelf:'flex-end'}}>Gmail</Text>
               <Btn img={require('../../assets/Redes/email.png')} funcion={gmail} ></Btn>
              </View>
              
-             <Text>Quieres ponerte en contacto con nosotros</Text>
+             <Text style={{paddingHorizontal:20,fontSize: 20,}}>Quieres ponerte en contacto con nosotros</Text>
              <View style={{height:50, width:300, backgroundColor:'white', paddingVertical:5}}>
              <Button title='SMS' onPress={msg} style={styles.botones}/>
              </View>

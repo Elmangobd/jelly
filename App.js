@@ -20,7 +20,7 @@ import Perfil from './Pantallas/Drawer/Perfil';
 import CustomDrawer from './Componentes/CustomDrawer';
 import GelatinaFresa from './Pantallas/Stack/GelatinaFresa';
 import GelatinaFrutosRojos from './Pantallas/Stack/GelatinaFrutosRojos';
-import Verification from './src/pantallas/Verification';
+import Tienda from './Pantallas/Stack/Tienda'
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -54,14 +54,20 @@ export default function App() {
         }
         
       } />
-      <Stack.Screen name="Verification" component={Verification}
-          options={
-            {
-              headerShown: false
-            }
-          }
-
-        />
+      <Stack.Screen name="Tienda" component={Tienda}
+      options={
+        {
+          headerShown: false
+        }
+        
+      } />
+      <Stack.Screen name="Productos" component={Productos}
+      options={
+        {
+          headerShown: false
+        }
+        
+      } />
     </Stack.Navigator>
   </NavigationContainer>
 
@@ -89,7 +95,7 @@ function MyDrawer() {
           <Ionicons name="home-outline" size={22} color={color} />
         ),
       }}/>
-      <Drawer.Screen name="Perfil" component={Perfil} 
+      <Drawer.Screen name="Perfil IOT" component={Perfil} 
       options={{
         drawerIcon: ({color}) => (
           <Ionicons name="person-outline" size={22} color={color} />
@@ -124,7 +130,7 @@ function MyTabs() {
             tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" color={color} size={size} />),
           }}/>
-        <Tab.Screen name="Productos" component={MyStack}
+        <Tab.Screen name="Tienda" component={Tienda}
         options={
           {
             tabBarIcon: ({ color, size }) => (

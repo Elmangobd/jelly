@@ -13,7 +13,7 @@ function Ubicacion() {
   return (
     <View style={styles.container}>
         <View style={{height:50, backgroundColor:'white',width:'100%'}}>
-            <Text style={ {fontSize:20, paddingVertical:10, paddingHorizontal:30}}>ubicacionn de la tienda Jelly Delly</Text>
+            <Text style={ {fontSize:20, paddingVertical:10, paddingHorizontal:30}}>Ubicacion de la tienda Jelly Delly</Text>
         </View>
         <MapView
         style={styles.mapa}

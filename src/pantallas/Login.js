@@ -6,98 +6,87 @@ import { button1 } from '../common/button'
 import { head1,head2,formgroup,label,input,link,link2,errormessage } from '../common/formcss'
 
 const Login = ({navigation}) => {
-  const [fdata, setFdata] = useState({
-    email: '',
-    password: ''
-}) 
-
-const [errormsg, setErrormsg] = useState(null);
-
-const Sendtobackend = () => {
-  // console.log(fdata);
-  if (fdata.email == '' || fdata.password == '') {
-    setErrormsg('todos los campos son requeridos');
-    return;
+  const [errormsg, setErrormsg] = useState(null);
+  const [email, setuser] = useState('')
+  const [password, setpass] = useState('')
+  const [login, setlogin] = useState(false)
+  
+  const Sendtobackend = () => {
+      fetch('http://192.168.5.27:8000/api/users/email/' + email)
+          .then(resp => resp.json())
+          .then(data => {
+              if(email == '' && password == ''){
+                setErrormsg('hay campos vacios');
+              }
+              else if (data == null)
+              setErrormsg('Correo electronico inexistente');
+              else if (data.password == password){
+                setErrormsg('inicio de sesion aprovado');
+                  navigation.navigate('Homepage');
+              }
+              else
+                setErrormsg('contraseña incorrecta');
+          })
   }
-  else {
-    fetch('http://192.168.5.27:3000/signin', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(fdata)
-    })
-        .then(res => res.json()).then(
-            data => {
-                // console.log(data);
-                if (data.error) {
-                    setErrormsg(data.error);
-                }
-                else {
-                    alert('inicio de sesion aprovado');
-                    navigation.navigate('Homepage');
-                }
-            }
-        )
-}
+  
+  const hayAlgo = (value) => {
+      if (!login)
+      setuser(value)
+  }
+  
+  return (    <View style={styles.container}>
+    <Image style={styles.patternbg} source={Morado2}/>
 
-}
+    <View style={styles.container1}>
+        <View style={styles.s1}>
+          <Image style={styles.logo} source={logo}/>
+          <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Jelly delly</Text>
+          <Text style={styles.small1}>equipo </Text>
+        </View>
 
-  return (
-    <View style={styles.container}>
-      <Image style={styles.patternbg} source={Morado2}/>
-
-      <View style={styles.container1}>
-          <View style={styles.s1}>
-            <Image style={styles.logo} source={logo}/>
-            <Text style={styles.h1} onPress={() => navigation.navigate('welcome')}>Jelly delly</Text>
-            <Text style={styles.small1}>Equipo</Text>
+        <View style={styles.s2}>
+          <Text style={head1}>inicio de secion</Text>
+          <Text style={head2}>registrate para continuar</Text>
+          {
+            errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
+          }
+          <View style={formgroup}>
+            <Text style={label}>Email</Text>
+            <TextInput style={input}
+            placeholder="ingresa tu email"
+            onPressIn={() => setErrormsg(null)}
+            onChangeText={hayAlgo}
+            />
           </View>
 
-          <View style={styles.s2}>
-            <Text style={head1}>Inicio de sesion</Text>
-            <Text style={head2}>Registrate para continuar</Text>
-            {
-              errormsg ? <Text style={errormessage}>{errormsg}</Text> : null
-            }
-            <View style={formgroup}>
-              <Text style={label}>Email</Text>
-              <TextInput style={input}
-              placeholder="ingresa tu email"
-              onPressIn={() => setErrormsg(null)}
-              onChangeText={(text) => setFdata({ ...fdata, email: text })}
-              />
-            </View>
+          <View style={formgroup}>
+            <Text style={label}>Password</Text>
+            <TextInput style={input}
+            placeholder="ingresa tu  password"
+            secureTextEntry={true}
+            onChangeText={value => setpass(value)}
+            onPressIn={() => setErrormsg(null)}
+            />
+          </View >
 
-            <View style={formgroup}>
-              <Text style={label}>Contraseña</Text>
-              <TextInput style={input}
-              placeholder="ingresa tu  password"
-              secureTextEntry={true}
-              onChangeText={(text) => setFdata({ ...fdata, password: text })}
-              onPressIn={() => setErrormsg(null)}
-              />
-            </View >
-
-            <View style={styles.fp}>
-              <Text style={link}>Olvidaste la contraseña</Text>
-            </View>
-
-            <Text style={button1}
-            onPress={() => Sendtobackend()}
-            > Iniciar sesion</Text>
-
-            <Text style={link2}>No tienes cuenta?&nbsp;
-              <Text style={link} onPress={() => navigation.navigate('Signup')}
-              >Crea una nueva</Text> 
-            </Text>
-
+          <View style={styles.fp}>
+            <Text style={link}>olvidaste la contraseña</Text>
           </View>
-      </View>
+
+          <Text style={button1}
+          onPress={() => Sendtobackend()}
+          > Login</Text>
+
+          <Text style={link2}> no tienes cuenta?&nbsp;
+            <Text style={link} onPress={() => navigation.navigate('Signup')}
+            >Crea una nueva</Text> 
+          </Text>
+
+        </View>
     </View>
-  )
+  </View>
+)
 }
-
 export default Login
 
 const styles = StyleSheet.create({
